@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+main {
+  background-color: #222124;
+  min-height: 100vh;
+  color: #e8eaed;
+  position: relative;
+}
+
+.container {
+  min-height: 50vh;
+  padding-inline: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  position: relative;
+}
+
+.container img {
+  max-width: 500px;
+  width: 100%;
+}
+
+.search-menu {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-bar {
+  border: 2px solid #5f6368;
+  border-radius: 35px;
+  display: flex;
+  align-items: center;
+
+  margin-top: 30px;
+  padding: 0 24px;
+  position: relative;
+}
+
+.search-bar:hover,
+.search-bar:focus-within {
+  background-color: #303134;
+  border-color: #303134;
+  box-shadow: 0 0 4px 2px #1f2022;
+}
+
+.search-bar:focus-within {
+  border-radius: 24px 24px 0 0;
+}
+
+.search-bar input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.search-bar .search-icon,
+.search-bar .close-icon {
+  width: 20px;
+}
+
+.suggestion-menu {
+  border-radius: 0 0 24px 24px;
+  background-color: #303134;
+  box-shadow: 0 7px 4px 2px #1f2022;
+  padding: 0 0 15px;
+  display: none;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+}
+
+.top-border {
+  border-top: 1px solid #5f6368;
+  margin-inline: 25px;
+  margin-bottom: 8px;
+}
+
+.suggestion-menu p {
+  padding: 8px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar:focus-within + .suggestion-menu {
+  display: block;
+}
+
+.suggestion-menu p:hover {
+  background-color: #3c4043;
+}
+
+.doodle-shapes {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+}
+
+
+#search-icon {
+  width: 20px;
+}
