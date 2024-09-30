@@ -15,16 +15,20 @@
   <body>
     <div class="top-stripe"></div>
 
-    <div class="bottom-stripe"></div>
+    
 
     <div class="wrapper"><!--Main Wrapper -->
 
       <div class="profile-card-container"><!--Card Code container-->
         
         <div class="profile-card">
+          <div class="circle circle1"></div>
+          <div class="circle circle2"></div>
+
+
           <div class="profile-icons-container">
             <img src="./assests/images/like-icon.svg" alt="like-icon" />
-            <img src="./assests/images/share-icon.svg" alt="share-icon" />
+            <img onclick="navigator.share({url: location.href})" src="./assests/images/share-icon.svg" alt="share-icon" />
           </div>
 
           <div class="profile-content"><!--inside card another card-->
@@ -37,21 +41,35 @@
               />
               <div class="green-dot"></div>
             </div>
+
             <h3 class="card-heading">Asif Khan BigO</h3>
             <p class="card-subtitle">Full Stack Developer</p>
-            <a class="view-profile-button" href="#">View Full Profile</a>
+            <a class="view-profile-button" href="https://youtube.com/@binarybrilliance-0?si=CZzDD_IaWydjxcAP" target="_blank">View Full Profile</a>
 
             <div class="social-media-icons">
-              <img src="./assests/images/linkedin.svg" alt="linkedin" />
-              <img src="./assests/images/twitter.svg" alt="twitter" />
-              <img src="./assests/images/telegram.svg" alt="telegram" />
+             
+              <a class="social-media-icon" href="https://www.linkedin.com/in/asif-khan-39a4ba27b/" target="_blank">
+                <img src="./assests/images/linkedin.svg" alt="linkedin" />
+              </a>
+
+              <a class="social-media-icon" href="https://github.com/AsifKhan-7" target="_blank">
+                <img  src="./assests/images/twitter.svg" alt="twitter" />
+              </a>
+
+              <a class="social-media-icon" href="#" target="_blank">
+                <img  src="./assests/images/telegram.svg" alt="telegram" />
+              </a>
+              
+              
             </div>
           </div>  <!--inside card another card end-->
         
         </div>
       </div><!--Card Code container End-->
-      
     </div><!--Main Wrapper End-->
+
+
+    <div class="bottom-stripe"></div>
     
   </body>
 </html>

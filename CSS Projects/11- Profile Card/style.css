@@ -7,16 +7,21 @@
   font-family: "Nunito", sans-serif;
 }
 
+
+
+.top-stripe {
+  width: 100%;
+  height: 52px;
+  background-color: #9d40e4;
+  position: fixed;
+  z-index: 1;
+}
+
 .wrapper {
   min-height: 100vh;
   background-color: #fcf0ff;
   position: relative;
   padding-inline: 1rem;
-}
-
-.top-stripe {
-  height: 35px;
-  background-color: #9d40e4;
 }
 
 .profile-card-container {
@@ -27,6 +32,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   position: relative;
+  padding: 52px 0 0 0;
 }
 
 .profile-card {
@@ -34,10 +40,28 @@
   width: 100%;
   background-color: #9d40e4;
   border-radius: 30px;
-  padding: 32px 18px 24px;
+  padding: 32px 22px 24px;
   position: relative;
 }
 
+.circle {
+  background-image: linear-gradient(0deg, #9c45de 0%, #a453e2 100%);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle1 {
+  width: 160px;
+  height: 160px;
+  right: 15px;
+  top: 35px;
+}
+.circle2 {
+  width: 90px;
+  height: 90px;
+  top: 90px;
+  left: 8px;
+}
 .profile-icons-container {
   display: flex;
   justify-content: space-between;
@@ -55,6 +79,7 @@
   border-radius: 30px;
   text-align: center;
   margin-top: 60px;
+  position: relative;
 }
 
 .avtar-container {
@@ -81,7 +106,7 @@
   margin-bottom: 0;
   margin-top: 14px;
   font-size: 18px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .card-subtitle {
@@ -96,10 +121,24 @@
   padding: 8px 20px;
   display: inline-block;
   margin-bottom: 22px;
+  margin-top: 1rem;
   font-size: 15px;
+  font-weight: 700;
+  &:hover {
+    background-image: linear-gradient(0deg, #fecd2f 0%, #feb02f 100%);
+  }
 }
 
 .social-media-icons {
   border-top: 2px solid #f5f5f5;
-  padding: 16px 0;
+  padding: 16px 0 10px;
+}
+
+.social-media-icon + .social-media-icon {
+  margin-left: 0.5rem;
+}
+
+.bottom-stripe {
+  height: 20px;
+  background-color: #9d40e4;
 }
