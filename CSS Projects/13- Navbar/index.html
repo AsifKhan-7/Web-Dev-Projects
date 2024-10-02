@@ -15,39 +15,92 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-
     <!-- end font family code  -->
   </head>
   <body>
     <header>
-      <!-- This is logo container  -->
-      <div class="logo-container">
-        <img src="./assests/images/logo.svg" alt="logo" />
-        <span>BigOh</span>
+
+      <!-- complete code container  -->
+      <div>
+        <!-- This is logo container  -->
+        <div class="logo-container">
+          <img src="./assests/images/logo.svg" alt="logo" />
+          <span>BigOh</span>
+        </div>
+        <!-- logo container end -->
+
+
+           <!-- hamburger menu container  -->
+           <div class="hamburger-menu">
+             <label for="hamburger-checkbox">
+               <img src="./assests/images/hamburger.svg" alt="hamburger" /></label>
+              </div>
+              <input type="checkbox" id="hamburger-checkbox" />
+          <!-- hamburger menu container end --> 
+
+
+
+        <!-- navigation & user profile container   -->
+        <div class="nav-user-container">
+          <!-- navigation with links  -->
+          <nav>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <!-- This is courses list  -->
+              <li class="courses">
+                <span>Courses</span>
+                <img src="./assests/images/dropdown.svg" alt="dropdown" />
+                <ul>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">Lorem ipsum dolor sit amet.</a>
+                  </li>
+                </ul>
+              </li>
+              <!-- courses list end -->
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </nav>
+          <!-- navigation end  -->
+
+          <!-- user profile section  -->
+          <div class="user">
+            <div class="user-icon">
+              <img src="./assests/images/avatar.svg" alt="avatar" />
+              <div class="green-dot"></div>
+            </div>
+            <span>Asif Khan</span>
+            <label class="close-icon" for="hamburger-checkbox">
+            <img
+              src="./assests/images/close-icon.svg"
+              alt="close-icon"
+            />
+          </label>
+          </div>
+          <!-- user profile section end -->
+        </div>
+        <!-- navigation & user profile container end -->
+
+
+         
+
       </div>
-      <!-- end logo container  -->
-
-      <!-- navigation with links  -->
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Courses</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- navigation end  -->
-
-
-      <!-- user profile container  -->
-      <div class="user-profile-container">
-        <img src="./assests/images/avatar.svg" alt="avatar" />
-        <span>Asif Khan</span>
-      </div>
-      <div class="green-dot"></div>
-     <!-- end user profile  -->
-
-
+      <!-- complete code container end -->
     </header>
   </body>
 </html>
