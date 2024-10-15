@@ -54,26 +54,34 @@
     </div>
 
     <script>
-      let score = {
-        win: 0,
-        lost: 0,
-        tie: 0,
-        displayScore: function () {
-          return `win: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
-        },
-      };
-
-      function generateComputerChoice() {
-        let randomNumber = Math.floor(Math.random() * 4);
-
-        if (randomNumber > 0 && randomNumber <= 2) {
-          return `Bat`;
-        } else if (randomNumber > 2 && randomNumber <= 4) {
-          return `Ball`;
-        } else {
-          return `Stump`;
-        }
+      let scoreStr = localStorage.getItem("score");
+      let score;
+      if (scoreStr !== undefined) {
+        score = JSON.parse(scoreStr);
+      } else {
+        score = {
+          win: 0,
+          lost: 0,
+          tie: 0,
+        };
       }
+
+      score.displayScore =  () =>{
+        return `win: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
+      },
+
+
+
+        function generateComputerChoice() {
+          let randomNumber = Math.floor(Math.random() * 4);
+          if (randomNumber > 0 && randomNumber <= 2) {
+            return `Bat`;
+          } else if (randomNumber > 2 && randomNumber <= 4) {
+            return `Ball`;
+          } else {
+            return `Stump`;
+          }
+        };
 
       function getResult(userMove, computerMove) {
         if (userMove === "Bat") {
@@ -113,6 +121,7 @@
       }
 
       function showResult(userMove, computerMove, result) {
+        localStorage.setItem("score", JSON.stringify(score));
         alert(
           `You have choosen ${userMove}. Computer choice is ${computerMove}
            ${result}
@@ -122,3 +131,6 @@
     </script>
   </body>
 </html>
+
+
+
