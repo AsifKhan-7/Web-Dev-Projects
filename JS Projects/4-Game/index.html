@@ -4,84 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game</title>
-
-    <style>
-      body {
-        background-color: #555;
-        color: #eee;
-        min-height: 100vh;
-        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-          "Lucida Sans", Arial, sans-serif;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        flex-direction: column;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <h1>Bat Ball and Stump Game</h1>
 
-    <div class="btn-container">
-      <button
-        onclick="
+    <button
+      class="choice-button"
+      onclick="
          let computerChoice = generateComputerChoice();
          let resultMsg = getResult(`Bat`, computerChoice);
          showResult(`Bat`, computerChoice, resultMsg);"
-      >
-        Bat
-      </button>
+    >
+      <img
+        title="Click on image"
+        src="./assets/images/bat.png"
+        alt="Bat Image"
+        class="choice-image"
+      />
+    </button>
 
-      <button
-        onclick="
+    <button
+      class="choice-button"
+      onclick="
            computerChoice =  generateComputerChoice();
            resultMsg = getResult(`Ball`, computerChoice);
             showResult(`Ball`, computerChoice, resultMsg);"
-      >
-        Ball
-      </button>
+    >
+      <img
+        title="Click on image"
+        src="./assets/images/ball.png"
+        alt="Ball Image"
+        class="choice-image"
+      />
+    </button>
 
-      <button
-        onclick="
+    <button
+      class="choice-button"
+      onclick="
            computerChoice = generateComputerChoice();
            resultMsg = getResult(`Stump`, computerChoice);
            showResult(`Stump`, computerChoice, resultMsg);"
-      >
-        Stump
-      </button>
-    </div>
+    >
+      <img
+        title="Click on image"
+        src="./assets/images/stump.png"
+        alt="Stump Image"
+        class="choice-image"
+      />
+    </button>
+
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+    <button
+      class="reset-button"
+      onclick="localStorage.clear()
+    resetScore();
+    "
+    >
+      Reset
+    </button>
 
     <script>
       let scoreStr = localStorage.getItem("score");
       let score;
-      if (scoreStr !== undefined) {
-        score = JSON.parse(scoreStr);
-      } else {
-        score = {
-          win: 0,
-          lost: 0,
-          tie: 0,
+      resetScore(scoreStr);
+
+      function resetScore(scoreStr) {
+        score = scoreStr
+          ? JSON.parse(scoreStr)
+          : {
+              win: 0,
+              lost: 0,
+              tie: 0,
+            };
+
+        score.displayScore = function () {
+          return `win: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
         };
+        showResult();
       }
 
-      score.displayScore =  () =>{
-        return `win: ${score.win}, lost: ${score.lost}, tie: ${score.tie}`;
-      },
-
-
-
-        function generateComputerChoice() {
-          let randomNumber = Math.floor(Math.random() * 4);
-          if (randomNumber > 0 && randomNumber <= 2) {
-            return `Bat`;
-          } else if (randomNumber > 2 && randomNumber <= 4) {
-            return `Ball`;
-          } else {
-            return `Stump`;
-          }
-        };
+      function generateComputerChoice() {
+        let randomNumber = Math.floor(Math.random() * 3);
+        if (randomNumber > 0 && randomNumber <= 1) {
+          return `Bat`;
+        } else if (randomNumber > 1 && randomNumber <= 2) {
+          return `Ball`;
+        } else {
+          return `Stump`;
+        }
+      }
 
       function getResult(userMove, computerMove) {
         if (userMove === "Bat") {
@@ -122,15 +138,19 @@
 
       function showResult(userMove, computerMove, result) {
         localStorage.setItem("score", JSON.stringify(score));
-        alert(
-          `You have choosen ${userMove}. Computer choice is ${computerMove}
-           ${result}
-           ${score.displayScore()}`
-        );
+
+        document.querySelector("#user-move").innerText = userMove
+          ? `You have choosen ${userMove}`
+          : "";
+
+        document.querySelector("#computer-move").innerText = computerMove
+          ? `Computer choice is ${computerMove}`
+          : "";
+
+        document.querySelector("#result").innerText = result || "";
+
+        document.querySelector("#score").innerText = score.displayScore();
       }
     </script>
   </body>
 </html>
-
-
-
