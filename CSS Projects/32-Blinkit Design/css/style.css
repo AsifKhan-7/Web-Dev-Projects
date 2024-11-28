@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+:root {
+  --black-color: #000000;
+  --black-color1: #1c1c1c;
+  --black-color2: #1f1f1f;
+  --black-color3: #363636;
+  --green-color: #0c831f;
+  --green-color1: #318616;
+  --gray-color: #666666;
+  --gray-color1: #828282;
+  --gray-color2: #999999;
+  --white-color: #ffffff;
+  --white-color1: #f2f2f2;
+  --white-color2: #f7fff9;
+  --white-color3: #f8f8f8;
+  --white-color4: #fcfcfc;
+}
+
+/* resets */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Crimson Pro", serif;
+}
+
+/* Font-face collapsed */
+
+/* {
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-Light") format("woff"),
+    url("fonts/CrimsonPro-Light") format("woff2");
+  font-display: swap;
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-Regular") format("woff"),
+    url("fonts/CrimsonPro-Regular") format("woff2");
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-Black") format("woff"),
+    url("fonts/CrimsonPro-Black") format("woff2");
+  font-display: swap;
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-Bold") format("woff"),
+    url("fonts/CrimsonPro-Bold") format("woff2");
+  font-display: swap;
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-Medium") format("woff"),
+    url("fonts/CrimsonPro-Medium") format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "CrimsonPro", Helvetica, sans-serif;
+  src: url("fonts/CrimsonPro-SemiBold") format("woff"),
+    url("fonts/CrimsonPro-SemiBold") format("woff2");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+} */
+
+/* header */
+
+header {
+  display: flex;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  padding: 20px 30px;
+  border-right: 1px solid var(--white-color1);
+}
+
+.header-address {
+  padding: 20px 30px;
+}
+
+.header-address h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.header-address p {
+  font-size: 14px;
+}
+/* h1 {
+  font-family: "Crimson Pro", serif;
+  font-optical-sizing: auto;
+  font-weight: 900;
+  font-style: normal;
+} */
