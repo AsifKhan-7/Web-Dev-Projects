@@ -90,6 +90,10 @@
 
 header {
   display: flex;
+  align-items: center;
+  gap: 30px;
+  border-top: 1px solid var(--white-color1);
+  border-bottom: 1px solid var(--white-color1);
 }
 
 .header-left {
@@ -109,10 +113,102 @@ header {
 .header-address h3 {
   font-size: 18px;
   margin-bottom: 5px;
+  font-weight: 900;
 }
 .header-address p {
   font-size: 14px;
 }
+
+.search-box {
+  display: flex;
+  flex-grow: 1;
+  border: 1px solid #eeeeee;
+  background-color: var(--white-color3);
+  border-radius: 12px;
+}
+
+.search-box button {
+  padding: 15px;
+  background: transparent;
+  border: none;
+}
+
+.search-box button i {
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.search-box input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  background-color: var(--white-color3);
+}
+
+.search-box input::placeholder {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.header-right {
+  display: flex;
+  margin-right: 35px;
+  gap: 40px;
+}
+
+.header-right button {
+  padding: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+}
+
+.header-right button:first-child {
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.header-right button:last-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--green-color);
+  color: var(--white-color);
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+/* sections */
+
+.banner-section {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.banner-section img {
+  width: 100%;
+}
+
+.order-banner {
+  max-width: 1280px;
+  display: flex;
+  margin: auto;
+}
+
+.order-banner-item {
+  flex-basis: 27%;
+  margin: 1%;
+}
+
+.order-banner-item img {
+  width: 100%;
+}
+
 /* h1 {
   font-family: "Crimson Pro", serif;
   font-optical-sizing: auto;

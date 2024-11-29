@@ -1,5 +1,52 @@
 @media only screen and (min-width: 200px) and (max-width: 575px) {
   header {
     flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .header-left {
+    justify-content: center;
+  }
+
+  .logo {
+    padding: 10px;
+  }
+
+  .header-address {
+    padding: 10px;
+  }
+
+  .header-address h3 {
+    font-size: 15px;
+    margin-bottom: 3px;
+  }
+
+  .search-box button {
+    padding: 10px;
+  }
+
+  .search-box input::placeholder {
+    font-size: 1rem;
+  }
+
+  .header-right {
+    position: fixed;
+    bottom: 0;
+    justify-content: center;
+    width: 100%;
+    margin-right: 0;
+    background-color: var(--white-color);
+    padding: 5px 0;
+  }
+
+  .banner-section {
+    display: none;
+  }
+
+  .order-banner {
+    flex-direction: column;
+    padding: 10px;
   }
 }
