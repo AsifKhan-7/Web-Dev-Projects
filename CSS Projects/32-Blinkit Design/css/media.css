@@ -49,4 +49,8 @@
     flex-direction: column;
     padding: 10px;
   }
+
+  .category-item {
+    flex-basis: 25%;
+  }
 }

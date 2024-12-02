@@ -209,6 +209,36 @@ header {
   width: 100%;
 }
 
+.category-section {
+  max-width: 1280px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex-basis: 10%;
+}
+
+.category-item img {
+  width: 100%;
+}
+
+.product-section {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.product-row {
+  width: 100%;
+  display: flex;
+}
+
+.product-item {
+  flex-basis: 15%;
+  border: 0.5px solid #e8e8e8;
+}
+
 /* h1 {
   font-family: "Crimson Pro", serif;
   font-optical-sizing: auto;
