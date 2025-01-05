@@ -1,17 +1,28 @@
-// let character = "Hello";
-// let count = 8;
-// let rows = ["Naomi", "Quincy", "CamperChan"];
-// rows[2] = 10;
-// console.log(rows);
+const character = "!";
+const count = 10;
+const rows = [];
+let inverted = true;
 
-// let cities = ["London", "New York", "Mumbai"];
-// console.log(cities);
+function padRow(rowNumber, rowCount) {
+  return (
+    " ".repeat(rowCount - rowNumber) +
+    character.repeat(2 * rowNumber - 1) +
+    " ".repeat(rowCount - rowNumber)
+  );
+}
 
-// cities[cities.length - 1] = "Mexico City";
-// console.log(cities);
+for (let i = 1; i <= count; i++) {
+  if (inverted) {
+    rows.unshift(padRow(i, count));
+  } else {
+    rows.push(padRow(i, count));
+  }
+}
 
-// let pushed = rows.push("freeCodeCamp");
-// console.log(pushed);
+let result = "";
 
-// let popped = rows.pop();
-// console.log(popped);
+for (const row of rows) {
+  result = result + row + "\n";
+}
+
+console.log(result);
