@@ -53,4 +53,21 @@
   .category-item {
     flex-basis: 25%;
   }
+
+  .product-section {
+    padding: 0 10px;
+  }
+
+  .product-item {
+    flex-basis: 49%;
+  }
+
+  footer {
+    padding: 0;
+  }
+
+  .footer-mid-row1 {
+    flex-direction: column;
+    padding: 10px;
+  }
 }
