@@ -261,7 +261,7 @@ header {
   flex-basis: 15%;
   border: 0.5px solid #e8e8e8;
   border-radius: 8px;
-  box-shadow: 0 0 10px 2px var(--white-color1);
+  box-shadow: 0 0 10px 2px var(--white-color);
   margin-bottom: 20px;
 }
 
@@ -356,7 +356,8 @@ footer {
 
 .footer-mid-row1-left h3 {
   margin-bottom: 20px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: normal;
 }
 
 .quick-links {
@@ -367,11 +368,13 @@ footer {
   flex-basis: 33%;
 }
 
-.quick-links ul li a {
-  font-size: 1rem;
+.quick-links ul li a,
+.FooterLinks__List .FooterLinks__ListItem a {
+  font-size: 1.08rem;
   margin-bottom: 0.5rem;
   display: block;
   color: var(--gray-color);
+  font-weight: normal;
 }
 
 .footer-mid-row1-right {
@@ -386,10 +389,108 @@ footer {
 }
 
 .category-heading h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: normal;
 }
-.category-heading a {
+
+.category-heading .category-anchor {
+  font-size: 1.4rem;
+  font-weight: normal;
   color: var(--green-color1);
-  font-weight: 600;
-  font-size: 1.1rem;
+}
+
+.FooterLinks__List {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 10px;
+}
+
+.FooterLinks__List .FooterLinks__ListItem {
+  flex-basis: 30%;
+}
+
+.footer-mid-row2 {
+  background-color: var(--white-color4);
+  width: 100%;
+  padding: 1.45rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer-mid-row2 p {
+  flex-basis: 40%;
+  text-align: center;
+  color: var(--gray-color);
+  font-weight: normal;
+  font-size: 1rem;
+}
+.app-icons {
+  flex-basis: 30%;
+  gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.download-app img {
+  margin-right: 0.7rem;
+  width: 6.3rem;
+}
+
+.app-icons h5 {
+  font-weight: 700;
+  color: var(--gray-color);
+  font-size: 1rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-icons i {
+  width: 40px;
+  height: 40px;
+  background-color: #1f1f1f;
+  color: var(--white-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+.footer-mid-row3 p {
+  margin: 12px;
+  color: var(--gray-color);
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.5rem;
+}
+
+/* Scrollbar styles for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Scrollbar styles for firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
 }

@@ -69,5 +69,33 @@
   .footer-mid-row1 {
     flex-direction: column;
     padding: 10px;
+
+    font-size: 1rem;
+  }
+  .FooterLinks__List .FooterLinks__ListItem {
+    flex-basis: 47%;
+  }
+
+  .quick-links ul li a,
+  .FooterLinks__List .FooterLinks__ListItem a {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+
+  .footer-mid-row2 {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .app-icons {
+    flex-direction: column;
+  }
+
+  .download-app img {
+    margin-right: 0.5rem;
+  }
+
+  .footer-mid-row3 p {
+    text-align: center;
   }
 }
