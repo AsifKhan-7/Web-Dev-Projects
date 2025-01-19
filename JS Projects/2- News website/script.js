@@ -7,6 +7,11 @@ window.addEventListener("load", fetchNews("India"));
 async function fetchNews(query) {
   const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
   const data = await res.json();
+
+  /* Debug the error */
+  console.log("Complete API Response:", data);
+  console.log("Articles Array:", data.articles);
+
   bindData(data.articles);
 }
 
