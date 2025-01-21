@@ -1,17 +1,17 @@
-:root {
-  --white: #fff;
-  --light-grey: #f5f6f7;
-  --dark-grey: #0a0a23;
-  --yellow: #f1be32;
-  --golden-yellow: #feac32;
-}
-
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --light-grey: #f5f6f7;
+  --dark-grey: #0a0a23;
+  --yellow: #f1be32;
+  --golden-yellow: #feac32;
 }
 
 body {
@@ -64,7 +64,7 @@ h1 {
   align-self: center;
   justify-self: center;
 }
-
+/* ---------------------------only from------------------------------------- */
 .close-task-form-btn {
   background: none;
   border: none;
@@ -129,6 +129,10 @@ h1 {
   padding: 2px;
 }
 
+.hidden {
+  display: none;
+}
+/* ------------------------------------------------- */
 #confirm-close-dialog {
   padding: 10px;
   margin: 10px auto;
@@ -153,10 +157,6 @@ h1 {
 
 .task {
   margin: 5px 0;
-}
-
-.hidden {
-  display: none;
 }
 
 @media (min-width: 576px) {
