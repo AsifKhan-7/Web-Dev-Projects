@@ -7,7 +7,13 @@ const sortInputArray = (event) => {
     ...document.getElementsByClassName("values-dropdown"),
   ].map((dropdown) => Number(dropdown.value));
 
-  const sortedValues = bubbleSort(inputValues);
+  // const sortedValues = bubbleSort(inputValues);
+  const sortedValues = inputValues.sort((a, b) => {
+    return a - b;
+  });
+
+  // const sortedValues = insertionSort(inputValues);
+  // const sortedValues = selectionSort(inputValues);
   updateUI(sortedValues);
 };
 
@@ -19,8 +25,8 @@ const updateUI = (array = []) => {
 };
 
 const bubbleSort = (array) => {
-  for (let i = 0; i < array.length; i++) {
-    for (let j = 0; j < array.length - 1; j++) {
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = 0; j < array.length - 1 - i; j++) {
       // console.log(array, array[j], array[j + 1]);
 
       if (array[j] > array[j + 1]) {
@@ -34,5 +40,41 @@ const bubbleSort = (array) => {
 };
 
 // console.log(bubbleSort([7, 8, 3, 1, 2]));
+
+const selectionSort = (array) => {
+  for (let i = 0; i < array.length - 1; i++) {
+    let minIndex = i;
+
+    for (let j = i + 1; j < array.length; j++) {
+      // console.log(array, array[j], array[j + 1]);
+
+      if (array[j] < array[minIndex]) {
+        minIndex = j;
+      }
+    }
+
+    const temp = array[i];
+    array[i] = array[minIndex];
+    array[minIndex] = temp;
+  }
+
+  return array;
+};
+
+// console.log(selectionSort([11, 2, 3, 8]));
+
+const insertionSort = (array) => {
+  for (let i = 1; i < array.length; i++) {
+    const currValue = array[i];
+    let j = i - 1;
+
+    while (j >= 0 && array[j] > currValue) {
+      array[j + 1] = array[j];
+      j--;
+    }
+    array[j + 1] = currValue;
+  }
+  return array;
+};
 
 sortButton.addEventListener("click", sortInputArray);
