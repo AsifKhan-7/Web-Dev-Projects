@@ -6,11 +6,15 @@ const infixToFunction = {
 };
 
 const infixEval = (str, regex) =>
-  str.replace(regex, (_match, arg1, operator, arg2) => {
-    console.log("Operator:", operator); // Debugging ke liye
-    return infixToFunction[String(operator)](Number(arg1), Number(arg2));
-  });
-console.log(typeof operator);
+  str.replace(regex, (_match, arg1, operator, arg2) =>
+    infixToFunction[operator](parseFloat(arg1), parseFloat(arg2))
+  );
+
+const highPrecedence = (str) => {
+  const regex = /([\d.]+)([*\/])([\d.]+)/;
+  const str2 = infixEval(str, regex);
+  return str === str2 ? str : highPrecedence(str2);
+};
 
 const isEven = (num) => (num % 2 === 0 ? true : false);
 
@@ -39,6 +43,21 @@ const spreadsheetFunctions = {
   median,
 };
 
+const applyFunction = (str) => {
+  const noHigh = highPrecedence(str);
+  const infix = /([\d.]+)([+-])([\d.]+)/;
+  const str2 = infixEval(noHigh, infix);
+  const functionCall = /([a-z0-9]*)\(([0-9., ]*)\)(?!.*\()/i;
+  const toNumberList = (args) => args.split(",").map(parseFloat);
+  const apply = (fn, args) =>
+    spreadsheetFunctions[fn.toLowerCase()](toNumberList(args));
+  return str2.replace(functionCall, (match, fn, args) =>
+    spreadsheetFunctions.hasOwnProperty(fn.toLowerCase())
+      ? apply(fn, args)
+      : match
+  );
+};
+
 const range = (start, end) =>
   Array(end - start + 1)
     .fill(start)
@@ -51,12 +70,14 @@ const evalFormula = (x, cells) => {
   const elemValue = (num) => (character) => idToText(character + num);
 
   const addCharacters = (character1) => (character2) => (num) =>
-    charRange(character1, character2).map(num);
+    charRange(character1, character2).map(elemValue(num));
+
   const rangeExpanded = x.replace(
     rangeRegex,
     (_match, char1, num1, char2, num2) =>
       rangeFromString(num1, num2).map(addCharacters(char1)(char2))
   );
+
   const cellRegex = /[A-J][1-9][0-9]?/gi;
   const cellExpanded = rangeExpanded.replace(cellRegex, (match) =>
     idToText(match.toUpperCase())
