@@ -41,6 +41,18 @@ const spreadsheetFunctions = {
   sum,
   average,
   median,
+
+  even: (nums) => nums.filter(isEven),
+  someeven: (nums) => nums.some(isEven),
+  increment: (nums) => nums.map((num) => num + 1),
+
+  firsttwo: (nums) => nums.slice(0, 2),
+  lasttwo: (nums) => nums.slice(-2),
+  has2: (nums) => nums.includes(2),
+  random: ([x, y]) => Math.floor(Math.random() * y + x),
+  range: (nums) => range(...nums),
+  nodupes: (nums) => [...new Set(nums).values()],
+  "": (nums) => nums,
 };
 
 const applyFunction = (str) => {
@@ -82,6 +94,11 @@ const evalFormula = (x, cells) => {
   const cellExpanded = rangeExpanded.replace(cellRegex, (match) =>
     idToText(match.toUpperCase())
   );
+
+  const functionExpanded = applyFunction(cellExpanded);
+  return functionExpanded === x
+    ? functionExpanded
+    : evalFormula(functionExpanded, cells);
 };
 
 const charRange = (start, end) =>
@@ -123,6 +140,10 @@ const update = (event) => {
   if (!value.includes(element.id) && value[0] === "=") {
     // if (!value.includes(element.id) && value.startsWith("=")) {
     // }
+    element.value = evalFormula(
+      value.slice(1),
+      Array.from(document.getElementById("container").children)
+    );
   }
 };
 
