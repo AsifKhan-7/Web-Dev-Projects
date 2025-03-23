@@ -107,13 +107,16 @@ class ShoppingCart {
     const product = products.find((item) => item.id === id);
     const { name, price } = product;
     this.items.push(product);
-    const totalCountPerProduct = {};
 
+    const totalCountPerProduct = {};
     this.items.forEach((dessert) => {
       totalCountPerProduct[dessert.id] =
         (totalCountPerProduct[dessert.id] || 0) + 1;
     });
 
     const currentProductCount = totalCountPerProduct[product.id];
+    const currentProductCountSpan = document.getElementById(
+      `product-count-for-id${id}`
+    );
   }
 }
