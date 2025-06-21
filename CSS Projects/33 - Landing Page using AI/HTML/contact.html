@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Web Development & Tech Education</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="../CSS/contact.css" />
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <!-- Left Section -->
+      <div class="navbar-left">
+        <button
+          class="menu-icon"
+          aria-label="Toggle mobile menu"
+          onclick="toggleMobileMenu()"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <a href="#" class="logo" aria-label="Company homepage">Logo</a>
+      </div>
+
+      <!-- Middle Section -->
+      <div class="navbar-center">
+        <ul class="nav-menu" role="menubar">
+          <li class="nav-item" role="none">
+            <a href="../index.html" class="nav-link" role="menuitem">Home</a>
+          </li>
+          <li class="nav-item" role="none">
+            <a href="./about.html" class="nav-link" role="menuitem">About Us</a>
+          </li>
+          <li class="nav-item" role="none">
+            <a href="#contact" class="nav-link" role="menuitem">Contact</a>
+          </li>
+          <li class="nav-item" role="none">
+            <a href="#projects" class="nav-link" role="menuitem">Projects</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Right Section -->
+      <div class="navbar-right">
+        <button
+          class="icon-button"
+          aria-label="User profile"
+          onclick="handleProfile()"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </button>
+        <button
+          class="icon-button"
+          aria-label="Settings"
+          onclick="handleSettings()"
+        >
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M21 13v-2a1 1 0 0 0-1-1h-.757l-.707-1.707.535-.536a1 1 0 0 0 0-1.414l-1.414-1.414a1 1 0 0 0-1.414 0l-.536.535L14 4.757V4a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v.757l-1.707.707-.536-.535a1 1 0 0 0-1.414 0L4.929 6.343a1 1 0 0 0 0 1.414l.536.536L4.757 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h.757l.707 1.707-.535.536a1 1 0 0 0 0 1.414l1.414 1.414a1 1 0 0 0 1.414 0l.536-.535 1.707.707V20a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-.757l1.707-.708.536.536a1 1 0 0 0 1.414 0l1.414-1.414a1 1 0 0 0 0-1.414l-.535-.536.707-1.707H20a1 1 0 0 0 1-1Z"
+            />
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-nav-menu" role="menu">
+          <li class="mobile-nav-item" role="none">
+            <a
+              href="#home"
+              class="mobile-nav-link"
+              role="menuitem"
+              onclick="closeMobileMenu()"
+              >Home</a
+            >
+          </li>
+          <li class="mobile-nav-item" role="none">
+            <a
+              href="#about"
+              class="mobile-nav-link"
+              role="menuitem"
+              onclick="closeMobileMenu()"
+              >About Us</a
+            >
+          </li>
+          <li class="mobile-nav-item" role="none">
+            <a
+              href="#contact"
+              class="mobile-nav-link"
+              role="menuitem"
+              onclick="closeMobileMenu()"
+              >Contact</a
+            >
+          </li>
+          <li class="mobile-nav-item" role="none">
+            <a
+              href="#projects"
+              class="mobile-nav-link"
+              role="menuitem"
+              onclick="closeMobileMenu()"
+              >Projects</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section" aria-label="Contact Us Section">
+      <div class="container">
+        <div class="contact-content">
+          <!-- Contact Header -->
+          <div class="contact-header">
+            <span class="section-subtitle">Get In Touch</span>
+            <h1 class="section-title">Contact Us</h1>
+            <p class="section-description">
+              Have questions about our courses or tech resources? Reach out to
+              us using the form below. We're here to help you on your learning
+              journey!
+            </p>
+          </div>
+
+          <!-- Contact Form -->
+          <form
+            class="contact-form"
+            aria-label="Contact form"
+            autocomplete="on"
+          >
+            <!-- Name Field -->
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                class="form-input"
+                placeholder="Enter your full name"
+                autocomplete="on"
+                required
+              />
+              <span class="input-icon"><i class="fas fa-user"></i></span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                class="form-input"
+                placeholder="Enter your email address"
+                autocomplete="on"
+                required
+              />
+              <span class="input-icon"><i class="fas fa-envelope"></i></span>
+            </div>
+
+            <!-- Phone Field -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input
+                type="tel"
+                id="phone"
+                class="form-input"
+                placeholder="Enter your phone number"
+                autocomplete="on"
+              />
+              <span class="input-icon"><i class="fas fa-phone"></i></span>
+            </div>
+
+            <!-- Address Field -->
+            <div class="form-group">
+              <label for="address">Address</label>
+              <textarea
+                id="address"
+                class="form-input form-textarea"
+                placeholder="Enter your full address"
+                autocomplete="on"
+              ></textarea>
+              <span class="input-icon"
+                ><i class="fas fa-map-marker-alt"></i
+              ></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="btn-container">
+              <button type="submit" class="btn">Send Message</button>
+            </div>
+          </form>
+
+          <!-- Social Media Section -->
+          <div class="social-section">
+            <h3 class="social-title">Connect With Us</h3>
+            <div class="social-icons">
+              <a href="#" class="social-icon facebook" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon twitter" aria-label="Twitter">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="social-icon linkedin" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-icon github" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hero Section (Demo Only) -->
+    <section class="demo-hero-section">
+      <div class="demo-hero-content">
+        <h1>Modern Web Development</h1>
+        <p>
+          Learn cutting-edge technologies and build amazing projects with our
+          comprehensive courses
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-container">
+        <!-- Column 1: Logo, Description & Button -->
+        <div class="footer-column">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="logo-text">DevCourse</div>
+          </div>
+          <p class="footer-description">
+            We provide industry-leading web development courses and resources to
+            help you advance your career. Join our community of 50,000+
+            developers.
+          </p>
+          <a href="#" class="btn">Explore Courses</a>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links">
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Home</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> About Us</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Courses</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Contact</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Blog</a>
+            </li>
+            <li>
+              <a href="#"><i class="fas fa-chevron-right"></i> Resources</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Latest Updates -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Latest Updates</h3>
+          <div class="update-item">
+            <a href="#">New React 19 Course Released with Advanced Features</a>
+            <span class="update-date">June 21, 2025</span>
+          </div>
+          <div class="update-item">
+            <a href="#">Web Development Trends to Watch in 2025</a>
+            <span class="update-date">June 15, 2025</span>
+          </div>
+          <div class="update-item">
+            <a href="#">AI Integration in Web Development Workshop</a>
+            <span class="update-date">May 10, 2025</span>
+          </div>
+        </div>
+
+        <!-- Column 4: Projects -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Projects</h3>
+          <div class="project-item">
+            <div class="project-badge"><i class="fas fa-code"></i></div>
+            <a href="#" class="project-link">E-Commerce Dashboard</a>
+          </div>
+          <div class="project-item">
+            <div class="project-badge"><i class="fas fa-code"></i></div>
+            <a href="#" class="project-link">Social Media Analytics</a>
+          </div>
+          <div class="project-item">
+            <div class="project-badge"><i class="fas fa-code"></i></div>
+            <a href="#" class="project-link">AI-Powered Chatbot</a>
+          </div>
+          <div class="project-item">
+            <div class="project-badge"><i class="fas fa-code"></i></div>
+            <a href="#" class="project-link">Blockchain Explorer</a>
+          </div>
+          <div class="project-item">
+            <div class="project-badge"><i class="fas fa-code"></i></div>
+            <a href="#" class="project-link">Real-time Collaboration Tool</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>
+          &copy; 2023 - <span id="current-year"></span> DevCourse. All rights
+          reserved. Designed by Asif with ❤️ for developers worldwide.
+        </p>
+      </div>
+    </footer>
+
+    <script src="./JS/script.js"></script>
+  </body>
+</html>
