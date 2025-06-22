@@ -1,0 +1,1480 @@
+/* ======
+  CSS CUSTOM PROPERTIES (Design Tokens)
+========= */
+:root {
+  /* Dark Theme Color Palette */
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-hover: #3a3a3a;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --accent-color: #007acc;
+  --accent-hover: #005c99;
+  --border-color: #404040;
+  --text-muted: #8a8a8a;
+  --success-color: #28a745;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  /* Spacing & Sizing */
+  --container-max-width: 1200px;
+  --container-padding: 1rem;
+  --grid-gap: 1rem;
+  --card-padding: 1.5rem;
+  --navbar-height: 4rem;
+  --icon-size: 1.5rem;
+  --border-radius: 0.75rem;
+  --transition-speed: 0.3s;
+  --image-height: 12rem;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-h2: 1.25rem;
+  --font-size-body: 1rem;
+  --font-size-small: 0.875rem;
+  --font-size-base: 1rem;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+}
+
+/* ========================================
+           GLOBAL RESET & BASE STYLES
+        ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ========================================
+           NAVBAR CONTAINER & GRID LAYOUT
+        ========================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  height: var(--navbar-height);
+}
+
+.navbar__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--container-padding);
+
+  /* CSS Grid Layout - Three Column Structure */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: "left center right";
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ========================================
+           LEFT SECTION - Logo & Menu Toggle
+        ========================================= */
+.navbar__left {
+  grid-area: left;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+.navbar__logo:hover {
+  color: var(--accent-hover);
+}
+
+.navbar__menu-toggle {
+  display: none; /* Hidden by default, shown on mobile */
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--icon-size);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed) ease;
+}
+
+.navbar__menu-toggle:hover {
+  background-color: var(--bg-hover);
+}
+
+.navbar__menu-toggle:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Hamburger Icon Styling */
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: var(--transition-speed) ease-in-out;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--text-primary);
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: var(--transition-speed) ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+.hamburger span:nth-child(2) {
+  top: 8px;
+}
+.hamburger span:nth-child(3) {
+  top: 16px;
+}
+
+/* Transform hamburger to X when menu is open */
+.hamburger.active span:nth-child(1) {
+  top: 8px;
+  transform: rotate(135deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+.hamburger.active span:nth-child(3) {
+  top: 8px;
+  transform: rotate(-135deg);
+}
+
+/* ========================================
+           CENTER SECTION - Navigation Menu
+        ========================================= */
+.navbar__center {
+  grid-area: center;
+  justify-self: center;
+}
+
+.navbar__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navbar__nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar__nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+}
+
+.navbar__nav-link:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.navbar__nav-link:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* Active link indicator */
+.navbar__nav-link.active {
+  color: var(--accent-color);
+  background-color: var(--bg-hover);
+}
+
+/* ========================================
+           RIGHT SECTION - Profile & Settings Icons
+        ========================================= */
+.navbar__right {
+  grid-area: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.navbar__icon-button {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: var(--icon-size);
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__icon-button:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-hover);
+}
+
+.navbar__icon-button:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ========================================
+           MOBILE RESPONSIVE DESIGN
+        ========================================= */
+@media (max-width: 768px) {
+  /* Show mobile menu toggle button */
+  .navbar__menu-toggle {
+    display: block;
+  }
+
+  /* Adjust grid layout for mobile */
+  .navbar__container {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  /* Hide desktop navigation by default */
+  .navbar__center {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px var(--shadow-color);
+
+    /* Mobile menu hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-1rem);
+    transition: all var(--transition-speed) ease;
+    z-index: 999;
+  }
+
+  /* Mobile menu visible state */
+  .navbar__center.mobile-menu-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Mobile navigation styling */
+  .navbar__nav {
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 0;
+  }
+
+  .navbar__nav-list {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+  }
+
+  .navbar__nav-item {
+    width: 100%;
+  }
+
+  .navbar__nav-link {
+    display: block;
+    width: 100%;
+    padding: 1rem var(--container-padding);
+    text-align: center;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .navbar__nav-link:last-child {
+    border-bottom: none;
+  }
+
+  /* Reduce icon button size on mobile */
+  .navbar__icon-button {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+  }
+}
+
+/* ========================================
+           EXTRA SMALL MOBILE DEVICES
+        ========================================= */
+@media (max-width: 480px) {
+  .navbar__container {
+    padding: 0 0.75rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.25rem;
+  }
+
+  .navbar__right {
+    gap: 0.25rem;
+  }
+}
+
+/* ========================================
+           MAIN CONTAINER LAYOUT
+        ========================================= */
+.album-page {
+  padding: 2rem 0;
+  min-height: 100vh;
+}
+
+.album-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ========================================
+           PAGE HEADING SECTION
+        ========================================= */
+.album-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.album-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+/* Decorative underline for the title */
+.album-title::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 3px;
+  background-color: var(--accent-color);
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.album-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========================================
+           CSS GRID LAYOUT FOR ALBUM GALLERY
+           6 columns on desktop, responsive on smaller screens
+        ========================================= */
+.album-grid {
+  display: grid;
+  /* Desktop: 6 equal columns with flexible sizing */
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--grid-gap);
+  width: 100%;
+}
+
+/* ========================================
+           INDIVIDUAL GRID ITEMS (Image Containers)
+        ========================================= */
+.album-item {
+  position: relative;
+  aspect-ratio: 1; /* Square aspect ratio for consistent grid */
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-speed) ease;
+  cursor: pointer;
+}
+
+/* Hover effect: subtle scale and shadow */
+.album-item:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+/* Focus state for accessibility */
+.album-item:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ========================================
+           IMAGE STYLING
+           Using object-fit: cover to fill containers
+        ========================================= */
+.album-image {
+  width: 100%;
+  height: 100%;
+  /* CRITICAL: object-fit: cover ensures image fills container while maintaining aspect ratio */
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-speed) ease;
+  display: block;
+}
+
+/* Subtle zoom effect on hover */
+.album-item:hover .album-image {
+  transform: scale(1.05);
+}
+
+/* ========================================
+           OVERLAY EFFECT (Optional Enhancement)
+        ========================================= */
+.album-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(0, 122, 204, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.album-item:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+           RESPONSIVE BREAKPOINTS
+           Grid adapts from 6 columns to fewer on smaller screens
+        ========================================= */
+
+/* Large Desktop (1200px+): 6 columns */
+@media (min-width: 1200px) {
+  .album-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+/* Desktop/Laptop (768px - 1199px): 4 columns */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .album-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tablet (480px - 767px): 3 columns */
+@media (max-width: 767px) and (min-width: 480px) {
+  .album-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .album-title {
+    font-size: 2rem;
+  }
+
+  .album-subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (479px and below): 2 columns */
+@media (max-width: 479px) {
+  .album-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .album-page {
+    padding: 1rem 0;
+  }
+
+  .album-header {
+    margin-bottom: 2rem;
+  }
+
+  .album-title {
+    font-size: 1.75rem;
+  }
+
+  .album-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .album-container {
+    padding: 0 0.75rem;
+  }
+}
+
+/* ========================================
+           LOADING STATE STYLES (Enhancement)
+        ========================================= */
+.album-image[loading="lazy"] {
+  background-color: var(--bg-secondary);
+  background-image: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    var(--bg-hover) 50%,
+    var(--bg-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ========================================
+           ACCESSIBILITY ENHANCEMENTS
+        ========================================= */
+
+/* Screen reader only text for better accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion preference support */
+@media (prefers-reduced-motion: reduce) {
+  .album-item,
+  .album-image,
+  .album-item::before {
+    transition: none;
+  }
+
+  .album-item:hover {
+    transform: none;
+  }
+
+  .album-item:hover .album-image {
+    transform: none;
+  }
+
+  .album-image[loading="lazy"] {
+    animation: none;
+  }
+}
+
+/* ========================================
+           TECHNOLOGY SECTION CONTAINER
+        ========================================= */
+.technologies-page {
+  padding: 2rem 0;
+  min-height: 100vh;
+}
+
+.technologies-container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/* ========================================
+           TECHNOLOGY HEADER SECTION
+        ========================================= */
+.technologies-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.technologies-title {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: var(--line-height-tight);
+}
+
+/* Decorative accent line under title */
+.technologies-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+.technologies-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ========================================
+           CSS GRID LAYOUT FOR TECHNOLOGY CARDS
+           4 columns on desktop, responsive on smaller screens
+        ========================================= */
+.technologies-grid {
+  display: grid;
+  /* Responsive grid: minimum 280px per column, maximum 4 columns */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--grid-gap);
+  width: 100%;
+}
+
+/* ========================================
+           TECHNOLOGY CARD STYLING
+           Equal height cards with flexible content
+        ========================================= */
+.technology-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  transition: all var(--transition-speed) ease;
+
+  /* Flexbox for equal height and content distribution */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+/* Hover effects for enhanced interactivity */
+.technology-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px var(--shadow-color);
+  border-color: var(--accent-color);
+}
+
+/* Focus state for accessibility */
+.technology-card:focus-within {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* ========================================
+           CARD IMAGE SECTION
+           Consistent height with object-fit: cover
+        ========================================= */
+.technology-image-container {
+  width: 100%;
+  height: var(--image-height);
+  margin-bottom: 1.5rem;
+  border-radius: calc(var(--border-radius) - 4px);
+  overflow: hidden;
+  background-color: var(--bg-secondary);
+  position: relative;
+}
+
+.technology-image {
+  width: 100%;
+  height: 100%;
+  /* CRITICAL: object-fit: cover maintains aspect ratio while filling container */
+  object-fit: cover;
+  object-position: center;
+  transition: transform var(--transition-speed) ease;
+}
+
+/* Subtle zoom effect on card hover */
+.technology-card:hover .technology-image {
+  transform: scale(1.05);
+}
+
+/* ========================================
+           CARD CONTENT SECTION
+           Flexible content area that pushes button to bottom
+        ========================================= */
+.technology-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.technology-name {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: var(--line-height-tight);
+}
+
+.technology-description {
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: 1.5rem;
+  /* Flex-grow pushes the button to bottom */
+  flex-grow: 1;
+}
+
+/* ========================================
+           EXPLORE BUTTON STYLING
+           Positioned at bottom of each card
+        ========================================= */
+.technology-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  border-radius: calc(var(--border-radius) - 2px);
+  transition: all var(--transition-speed) ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  /* Ensure button stays at bottom */
+  margin-top: auto;
+}
+
+.technology-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 204, 0.3);
+}
+
+.technology-button:focus {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.technology-button:active {
+  transform: translateY(0);
+}
+
+/* Button icon (using Unicode arrow) */
+.technology-button::after {
+  content: "→";
+  font-size: 1rem;
+  transition: transform var(--transition-speed) ease;
+}
+
+.technology-button:hover::after {
+  transform: translateX(2px);
+}
+
+/* ========================================
+           RESPONSIVE BREAKPOINTS
+           Grid adapts from 4 columns to fewer on smaller screens
+        ========================================= */
+
+/* Large Desktop (1200px+): Up to 4 columns */
+@media (min-width: 1200px) {
+  .technologies-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Desktop/Laptop (768px - 1199px): Up to 3 columns */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .technologies-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Tablet (480px - 767px): 2 columns */
+@media (max-width: 767px) and (min-width: 480px) {
+  .technologies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .technologies-title {
+    font-size: 2rem;
+  }
+
+  .technology-card {
+    padding: 1.25rem;
+  }
+
+  :root {
+    --image-height: 10rem;
+  }
+}
+
+/* Mobile (479px and below): 1 column */
+@media (max-width: 479px) {
+  .technologies-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .technologies-page {
+    padding: 1rem 0;
+  }
+
+  .technologies-header {
+    margin-bottom: 2rem;
+  }
+
+  .technologies-title {
+    font-size: 1.75rem;
+  }
+
+  .technologies-subtitle {
+    font-size: 1rem;
+  }
+
+  .technology-card {
+    padding: 1rem;
+  }
+
+  .technologies-container {
+    padding: 0 0.75rem;
+  }
+
+  :root {
+    --image-height: 8rem;
+  }
+}
+
+/* ========================================
+           LOADING STATE & ACCESSIBILITY
+        ========================================= */
+
+/* Loading shimmer for images */
+.technology-image[loading="lazy"] {
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    var(--bg-hover) 50%,
+    var(--bg-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Screen reader only content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .technology-card,
+  .technology-image,
+  .technology-button {
+    transition: none;
+  }
+
+  .technology-card:hover {
+    transform: none;
+  }
+
+  .technology-card:hover .technology-image {
+    transform: none;
+  }
+
+  .technology-button:hover {
+    transform: none;
+  }
+
+  .technology-image[loading="lazy"] {
+    animation: none;
+  }
+}
+
+/* Main contact container using CSS Grid for layout structure */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  min-height: 100vh;
+  place-items: center;
+  background: linear-gradient(
+    135deg,
+    var(--bg-primary) 0%,
+    var(--bg-secondary) 100%
+  );
+}
+
+/* Contact section wrapper for semantic structure */
+.contact-section {
+  width: 100%;
+  max-width: var(--container-max-width);
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px var(--shadow-color);
+  padding: clamp(2rem, 4vw, 3rem);
+  border: 1px solid var(--border-color);
+}
+
+/* Section header styling for accessibility and visual hierarchy */
+.contact-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.contact-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.contact-header p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Main contact form - centered with 80% width as specified */
+.contact-form {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Form field groups for proper semantic structure */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Icon container for input fields */
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Icon styling inside input fields */
+.input-icon {
+  position: absolute;
+  left: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+/* Icon color change on input focus */
+.input-container:focus-within .input-icon {
+  color: var(--accent-color);
+}
+
+/* Form labels with accessibility considerations */
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+/* Facebook-inspired input styling with modern interactions and icon padding */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+/* Additional padding for inputs with icons */
+.form-input.has-icon {
+  padding-left: 3rem;
+}
+
+/* Textarea specific styling to match input appearance */
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+/* Focus states for improved accessibility and UX */
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--accent-color);
+  background: var(--bg-hover);
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Hover states for better interactivity */
+.form-input:hover,
+.form-textarea:hover {
+  border-color: var(--text-muted);
+  background: var(--bg-hover);
+}
+
+/* Placeholder styling for consistent appearance */
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+/* Modern submit button with smooth animations */
+.submit-button {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: var(--accent-color);
+  color: var(--text-primary);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Submit button hover and focus states */
+.submit-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 122, 204, 0.3);
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.4);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Social media icons container - centered below form */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Individual social media icon styling */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.2rem;
+}
+
+/* Individual social media icon hover effects with brand colors */
+.social-icon.facebook:hover {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon.twitter:hover {
+  background: #1da1f2;
+  border-color: #1da1f2;
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(29, 161, 242, 0.4);
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-color: #e6683c;
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(225, 48, 108, 0.4);
+}
+
+.social-icon.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 119, 181, 0.4);
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 1rem;
+  }
+
+  .contact-section {
+    padding: 1.5rem;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .social-icons {
+    gap: 1rem;
+  }
+
+  .social-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Extra small screens optimization */
+@media (max-width: 480px) {
+  .contact-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .submit-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Footer Styles - Main Container */
+.footer {
+  background-color: var(--bg-primary);
+  border-top: 1px solid var(--border-color);
+  padding: clamp(2rem, 4vw, 4rem) clamp(1rem, 5vw, 2rem);
+  margin-top: auto;
+}
+
+/* Footer Grid Container - 4 columns on desktop, responsive on smaller screens */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Column 1: Branding & CTA Styles */
+.footer-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer-logo {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--accent-color);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.footer-logo:hover,
+.footer-logo:focus {
+  color: var(--accent-hover);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.footer-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.footer-cta-btn {
+  background-color: var(--accent-color);
+  color: var(--text-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  max-width: fit-content;
+}
+
+.footer-cta-btn:hover,
+.footer-cta-btn:focus {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  outline-offset: 2px;
+}
+
+/* Column 2 & 4: Navigation Lists (Quick Links & Projects) */
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer-nav h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-nav ul li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+  border-radius: 3px;
+  display: block;
+}
+
+.footer-nav ul li a:hover,
+.footer-nav ul li a:focus {
+  color: var(--accent-color);
+  padding-left: 0.5rem;
+  background-color: var(--bg-hover);
+  outline: 1px solid var(--accent-color);
+  outline-offset: 1px;
+}
+
+/* Column 3: Latest Updates with Horizontal Cards */
+.footer-updates {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer-updates h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.updates-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.update-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.update-card:hover,
+.update-card:focus-within {
+  background-color: var(--bg-hover);
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.update-card a {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.update-card a:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.update-card p {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* Footer Bottom - Copyright Section */
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Responsive Design - Mobile First Approach */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
+  }
+
+  .updates-container {
+    gap: 0.75rem;
+  }
+}
+
+/* Tablet view - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+/* Large screens - Ensure 4 columns with proper spacing */
+@media (min-width: 1025px) {
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+}
+
+/* Focus and accessibility improvements */
+.footer a:focus,
+.footer button:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .footer {
+    border-top-width: 2px;
+  }
+
+  .footer-nav ul li a:hover,
+  .footer-nav ul li a:focus {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

@@ -22,7 +22,6 @@ body {
   gap: 10px;
   grid-template-columns: repeat(12, 1fr);
   padding: 1.25rem;
-  place-items: center;
 }
 
 .box {
